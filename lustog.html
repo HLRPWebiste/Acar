@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Harmloses Spiel 😇</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    #game-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #jumpscare {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #jumpscare img {
+      max-width: 100%;
+      max-height: 100%;
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px); }
+      25% { transform: translate(10px, -10px); }
+      50% { transform: translate(-10px, 10px); }
+      75% { transform: translate(10px, 10px); }
+      100% { transform: translate(-10px, -10px); }
+    }
+
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game-area">
+    <h1>Willkommen beim Konzentrationsspiel 😇</h1>
+    <p>Drücke auf den Knopf, wenn du bereit bist...</p>
+    <button onclick="startGame()">Start</button>
+  </div>
+
+  <div id="jumpscare">
+    <img id="scary-img" src="scary-face.jpg" alt="Scary Face">
+  </div>
+
+  <audio id="scream-sound" src="scream.mp3" preload="auto"></audio>
+
+  <script>
+    function startGame() {
+      setTimeout(triggerJumpscare, 5000); // Nach 5 Sekunden
+    }
+
+    function triggerJumpscare() {
+      document.getElementById('jumpscare').style.display = 'flex';
+      document.getElementById('scream-sound').play();
+    }
+  </script>
+
+</body>
+</html>
